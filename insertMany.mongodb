@@ -1,0 +1,10 @@
+use('closing_template_db')
+
+db.agrupadors.insertMany([
+    {title: "Saldo en Moneda - Sumatoria de los ramos contables", team: "BC", Raizal: {id:"HU-251978",title: "Saldo en moneda de la transacción sumatoria de los ramos contables no coincide con el total", status: "New"}}, 
+{title: "Encolamiento BC/SAP - Cola 0/CommissionProvision", team: "BC", Raizal: {id:"HU-353432",title: "Error en la cola 0 por CommissionProvision no se construyen en algunas facturas", status: "New"}}, 
+        
+])
+
+db.agrupadors.find({})
+
