@@ -1,6 +1,13 @@
 use("closing_template_db");
 
 db.agrupadors.insertOne(
-    {title: "Se presentaron errores en la consulta de prospectos", team: "GC", Raizal: {}}, 
-
+    {
+        title: "Pruebas",
+        team: "Pruebas",
+        Raizal: {
+            id: "HU-684985",
+            title: "Pruebas",
+            status: "New"
+        }
+    }
 );

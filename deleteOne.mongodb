@@ -1,4 +1,4 @@
 use('closing_template_db')
 
-//db.agrupadors.deleteOne({title :{$eq: 'Capacitación'}})
-db.agrupadors.deleteOne({_id: ObjectId('660349ee88946bb0d6e91875')})
+db.agrupadors.deleteOne({title :{$eq: 'Pruebas'}})
+//db.agrupadors.deleteOne({_id: ObjectId('673ceabc0a34b6e8bfb4bf5a')})

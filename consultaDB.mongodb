@@ -1,8 +1,9 @@
 use('closing_template_db')
 
 //db.agrupadors.drop()
-//db.agrupadors.find()
-//db.agrupadors.find({title :{$eq: 'Procesamiento Masivo - AUDITTASK_PDN'}})
-db.agrupadors.find({_id: ObjectId("660349ee88946bb0d6e91875")})
+db.agrupadors.find({}, { _id: 0 }).toArray()
+//db.agrupadors.find({"Raizal.status" :{$eq: 'Pruebas'}})
+//db.agrupadors.find({title :{$eq: 'Cancelación - Cancelación - Cargos Inconsistentes /HG'}})
+//db.agrupadors.find({_id: ObjectId("673e22349f674f2cb6912270")})
 //db.agrupadors.find({"Raizal.id" :{$eq: 'HU-39231'}})
 //db.agrupadors.find({"Raizal.id" :{$in:['HU-23777','HU-23876']}}).count()

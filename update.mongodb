@@ -1,14 +1,18 @@
-use('closing_template_db')
+use("closing_template_db");
 
 //db.agrupadors.find({"Raizal.id" :{$eq: 'HU-23879'}})
 
 //db.agrupadors.find({title :{$eq: 'Transacción en proceso - Tarifación-Expedición-Cancelación'}})
 
-db.agrupadors.updateMany(
-    {title :{$eq: 'Sustituciones - Reflejo de Job/Tarifación/Expedición'}}, 
-    {$set : {"Raizal":{id:"HU-427063",title: "Reflejo de Job/Tarifación/Expedición", status: "New"}}}
-    )
-
-
+db.agrupadors.updateMany({
+  title: "Violaciones de restricciones nulas - Se detectaron una o más violaciones de restricciones nulas para RITIVElement_Ext",
+  team: "PC",
+  Raizal: {
+    id: "HU-851019",
+    title: "Nuevas coberturas Patrimoniales - Clinicas y Daños a terceros",
+    status: "Backlog",
+  },
+  confluence: "https://segurosti.atlassian.net/wiki/spaces/EAG/pages/",
+});
 
 //db.agrupadors.find()
