@@ -1,9 +1,126 @@
 use('closing_template_db')
 
 //db.agrupadors.drop()
-db.agrupadors.find({}, { _id: 0 }).toArray()
+//db.agrupadors.find({}, { _id: 0 }).toArray()
 //db.agrupadors.find({"Raizal.status" :{$eq: 'Pruebas'}})
 //db.agrupadors.find({title :{$eq: 'Cancelación - Cancelación - Cargos Inconsistentes /HG'}})
 //db.agrupadors.find({_id: ObjectId("673e22349f674f2cb6912270")})
 //db.agrupadors.find({"Raizal.id" :{$eq: 'HU-39231'}})
 //db.agrupadors.find({"Raizal.id" :{$in:['HU-23777','HU-23876']}}).count()
+
+
+// ===== CONSULTAS DE CONTEO =====
+
+// 1. Contar TODOS los registros en la colección
+//db.agrupadors.countDocuments();
+
+// 2. Contar registros que tienen Raizal.id (no vacío)
+//db.agrupadors.countDocuments({"Raizal.id": {$ne: "", $exists: true}});
+
+// 3. Contar registros sin Raizal.id (vacío o null)
+//db.agrupadors.countDocuments({"Raizal.id": ""});
+
+// 4. Contar usando aggregation (más detallado)
+/* db.agrupadors.aggregate([
+  {
+    $group: {
+      _id: null,
+      total_registros: { $sum: 1 },
+      con_raizal_id: {
+        $sum: {
+          $cond: [
+            { $and: [
+              { $ne: ["$Raizal.id", ""] },
+              { $exists: "$Raizal.id" }
+            ]},
+            1,
+            0
+          ]
+        }
+      },
+      sin_raizal_id: {
+        $sum: {
+          $cond: [
+            { $eq: ["$Raizal.id", ""] },
+            1,
+            0
+          ]
+        }
+      }
+    }
+  }
+]);
+ */
+/* db.agrupadors.find(
+  { "title": "Nota Manual - #Negocio" },
+  { "title": 1, "Raizal.id": 1, "_id": 0 }
+);
+ */
+
+// CONSULTA PARA EXPORTAR A CSV - CON ORDENAMIENTO ALFABÉTICO
+/* db.agrupadors.aggregate([
+  {
+    $project: {
+      title: 1,
+      Raizal: "$Raizal.id",
+      _id: 0
+    }
+  },
+  {
+    $sort: { title: 1 }  // Ordenamiento alfabético ascendente por título
+  }
+]).toArray(); */
+
+// ALTERNATIVA: Para generar formato CSV manualmente en MongoDB Compass
+/* 
+db.agrupadors.aggregate([
+  {
+    $project: {
+      csv_line: {
+        $concat: [
+          "\"", { $replaceAll: { input: "$title", find: "\"", replacement: "\"\"" } }, "\"",
+          ",",
+          "\"", { $ifNull: ["$Raizal.id", ""] }, "\""
+        ]
+      },
+      _id: 0
+    }
+  },
+  {
+    $sort: { csv_line: 1 }
+  }
+]);
+*/
+
+/* db.agrupadors.aggregate([
+  { $match: { "title": "Nota Manual - #Negocio" } },
+  { 
+    $project: {
+      titulo_principal: "$title",
+      raizal_id: "$Raizal.id",
+      raizal_descripcion: "$Raizal.title"
+    }
+  }
+]); */
+
+
+
+//Byscar solo por un agrupador
+
+db.agrupadors.aggregate([
+  {
+    $match: {
+      title: { $regex: "Factura", $options: "i" }  // "i" para búsqueda case-insensitive
+    }
+  },
+  {
+    $project: {
+      title: 1,
+      Raizal: "$Raizal.id",
+      _id: 0
+    }
+  },
+  {
+    $sort: { title: 1 }  // Ordenamiento alfabético ascendente por título
+  }
+]).toArray();
