@@ -58,7 +58,7 @@ use('closing_template_db')
  */
 
 // CONSULTA PARA EXPORTAR A CSV - CON ORDENAMIENTO ALFABÉTICO
-/* db.agrupadors.aggregate([
+db.agrupadors.aggregate([
   {
     $project: {
       title: 1,
@@ -69,7 +69,7 @@ use('closing_template_db')
   {
     $sort: { title: 1 }  // Ordenamiento alfabético ascendente por título
   }
-]).toArray(); */
+]).toArray();
 
 // ALTERNATIVA: Para generar formato CSV manualmente en MongoDB Compass
 /* 
@@ -107,7 +107,7 @@ db.agrupadors.aggregate([
 
 //Byscar solo por un agrupador
 
-db.agrupadors.aggregate([
+/* db.agrupadors.aggregate([
   {
     $match: {
       title: { $regex: "Factura", $options: "i" }  // "i" para búsqueda case-insensitive
@@ -123,4 +123,4 @@ db.agrupadors.aggregate([
   {
     $sort: { title: 1 }  // Ordenamiento alfabético ascendente por título
   }
-]).toArray();
+]).toArray(); */
