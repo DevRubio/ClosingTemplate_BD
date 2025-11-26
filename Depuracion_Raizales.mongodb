@@ -523,6 +523,10 @@ db.agrupadors.insertMany([
     { title: "Transacción en proceso - Tarifación-Expedición-Cancelación /HG", team: "HG", Raizal: { id: "HU-616784", title: "OP. HOGAR   -   Incluye HU-593972 - Transacción en proceso - Tarifación-Expedición-Cancelación /HG   y   HU-593943 Cancelación - Desde inicio de vigencia  /HG    URL:    https://dev.azure.com/SuraColombia/Gerencia_Tecnologia_Egv_Aseguramiento/_workitems/edit/593943     ", status: "New" }, confluence: 'https://segurosti.atlassian.net/wiki/spaces/EAG/pages/3495624845/Cancelaci+n+desde+inicio+de+vigencia' },
 
     { title: "Sarlaft - Error en servicio de validación - Al menos una figura requiere información adicional en el Sarlaft. Para continuar con el proceso de expedición completa el formulario", team: "GC", Raizal: { id: "HU-912618", title: "OP. HOGAR/EMPRESARIAL   -   Sarlaft - Error en servicio de validación - Al menos una figura requiere información adicional en el Sarlaft. Para continuar con el proceso de expedición completa el formulario      Empresarial/Hogar/PES       URL:    https://dev.azure.com/SuraColombia/Gerencia_Tecnologia_Egv_Aseguramiento/_workitems/edit/912618   ", status: "New" }, confluence: 'https://segurosti.atlassian.net/wiki/spaces/EAG/pages/3222110225/Al+menos+una+figura+requiere+informaci+n+adicional+en+el+Sarlaft' },
+    
+    
+    { title: "Procesamiento Masivo - Ajustar cuadre automático del POC", team: "BC", Raizal: { id: "HU-965512", title: "Ajustar cuadre automático del POC       URL:    https://dev.azure.com/SuraColombia/Gerencia_Tecnologia_Egv_Aseguramiento/_workitems/edit/965512   ", status: "New" }, confluence: 'https://segurosti.atlassian.net/' },
+
 ])
 
 db.agrupadors.find({})
